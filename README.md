@@ -1,11 +1,10 @@
 write-edid
 ==========
 
-Created by Dr. Ace Jeangle (support@chalk-elec.com) 
-based on script from Tom Kazimiers (https://github.com/tomka/write-edid)
+Created by Dr. Ace Jeangle (support@chalk-elec.com) based on script from Tom Kazimiers (https://github.com/tomka/write-edid)
 
 Writes EDID information over a given I2C-Bus to a monitor.
-**The scripts expects root permissions!**
+######**The script expects root permissions!**
 
 You can find out the bus number with: 
 ```
@@ -22,4 +21,4 @@ Example
 ```
 sudo ./write-edid.sh 3 edid.bin
 ```
-will write file with binary EDID data into I2C-Bus #3
+will write file edid.bin with binary EDID data into I2C-Bus #3
