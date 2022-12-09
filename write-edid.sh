@@ -67,16 +67,11 @@ edidLength=128
 count=0
 chipAddress="0x50"
 
-getOneLine ()
-{
-   line=$(line) || [ \! -z "$line" ]
-}
-
 if [ "$binaryMode" -eq 0 ] ; then
   cat "$FILE"
 else
   xxd -p -g 0 -u -c 1 -l 128 "$FILE"
-fi | while getOneLine ; do
+fi | while read line ; do
   for chunk in $line
   do
     # if we have reached 128 byte, stop
