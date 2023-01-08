@@ -9,8 +9,10 @@
 # You can find out the bus number with ic2detect -l. Address 0x50
 # should be available as the EDID data goes there.
 
+set -o errexit -o nounset -o pipefail
+
 PROGRAM_STRING=write
- 
+
 # i2c bus
 BUS=""
 
