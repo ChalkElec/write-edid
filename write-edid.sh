@@ -9,8 +9,10 @@
 # You can find out the bus number with ic2detect -l. Address 0x50
 # should be available as the EDID data goes there.
 
+set -o errexit -o nounset -o pipefail
+
 PROGRAM_STRING=write
- 
+
 # i2c bus
 BUS=""
 
@@ -67,16 +69,11 @@ edidLength=128
 count=0
 chipAddress="0x50"
 
-getOneLine ()
-{
-   line=$(line) || [ \! -z "$line" ]
-}
-
 if [ "$binaryMode" -eq 0 ] ; then
   cat "$FILE"
 else
   xxd -p -g 0 -u -c 1 -l 128 "$FILE"
-fi | while getOneLine ; do
+fi | while read -r line ; do
   for chunk in $line
   do
     # if we have reached 128 byte, stop
